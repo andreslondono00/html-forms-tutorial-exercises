@@ -11,13 +11,13 @@ body {
 	font-family: montserrat, arial, verdana;
 }
 /*form styles*/
-form {
+.msform {
 	width: 400px;
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
 }
-form fieldset {
+.msform fieldset {
 	background: white;
 	border: 0 none;
 	border-radius: 3px;
@@ -32,7 +32,7 @@ form fieldset {
 	position: absolute;
 }
 /*inputs*/
-form input {
+.msform input {
 	padding: 15px;
 	border: 1px solid rgba(0, 0, 0, 0.05);
 	border-radius: 3px;
@@ -43,15 +43,12 @@ form input {
 	color: #2c3e50;
 	font-size: 13px;
 }
-form input.error,
-form textarea.error {
+.msform input.error,
+.msform textarea.error {
 	border-color: rgb(255, 99, 71);
 }
 /*buttons*/
-form button[type="button"],
-form button[type="submit"],
-form input[type="button"],
-form input[type="submit"] {
+.msform .action-button {
 	width: 100px;
 	background: rgb(64, 64, 64);
 	font-weight: bold;
@@ -63,43 +60,33 @@ form input[type="submit"] {
 	margin: 10px 5px;
 	transition: all 0.4s;
 }
-form button[type="button"]:hover,
-form button[type="button"]:focus,
-form button[type="submit"]:hover,
-form button[type="submit"]:focus,
-form input[type="button"]:hover,
-form input[type="button"]:focus,
-form input[type="submit"]:hover,
-form input[type="submit"]:focus {
+.msform .action-button:hover,
+.msform .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(255, 99, 71);
 	background-color: rgb(255, 99, 71);
 }
 /*headings*/
-legend,
-h2,
-h3 {
+.fs-title {
 	font-size: 15px;
 	text-transform: uppercase;
 	color: #2c3e50;
 	margin-bottom: 10px;
 }
-h4,
-h5,
-h6,
-p {
+.fs-subtitle {
 	font-weight: normal;
 	font-size: 13px;
 	color: #666;
 	margin-bottom: 20px;
 }
 /*progressbar*/
-ul[role="progressbar"] {
+.progressbar {
 	overflow: hidden;
+	/*CSS counters to number the steps*/
 	counter-reset: step;
 	width: 60%;
 	margin: 0 auto 30px;
 }
-ul[role="progressbar"] li {
+.progressbar li {
 	list-style-type: none;
 	color: white;
 	text-transform: uppercase;
@@ -108,7 +95,7 @@ ul[role="progressbar"] li {
 	float: left;
 	position: relative;
 }
-ul[role="progressbar"] li:before {
+.progressbar li:before {
 	content: counter(step);
 	counter-increment: step;
 	width: 20px;
@@ -121,7 +108,7 @@ ul[role="progressbar"] li:before {
 	margin: 0 auto 5px auto;
 }
 /*progressbar connectors*/
-ul[role="progressbar"] li:after {
+.progressbar li:after {
 	content: "";
 	width: 100%;
 	height: 2px;
@@ -129,14 +116,16 @@ ul[role="progressbar"] li:after {
 	position: absolute;
 	left: -50%;
 	top: 9px;
-	z-index: -1;
+	z-index: -1; /*put it behind the numbers*/
 }
-ul[role="progressbar"] li:first-child:after {
+.progressbar li:first-child:after {
+	/*connector not needed before the first step*/
 	content: none;
 }
 /*marking active/completed steps green*/
-ul[role="progressbar"] li.active:before,
-ul[role="progressbar"] li.active:after {
+/*The number of the step and the connector before it = green*/
+.progressbar li.active:before,
+.progressbar li.active:after {
 	background: rgb(255, 99, 71);
 	color: white;
 }
